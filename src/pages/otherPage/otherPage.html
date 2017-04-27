@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Bienvenido: {{params.data.usuario}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="otherFormulario">
+       <ion-card>
+         <ion-card-header>
+           Responde Formulario
+         </ion-card-header>
+         <ion-card-content>
+            <ion-list no-lines>
+             <ion-item>
+                 <ion-label color="dark">Nombre Completo:</ion-label>
+                 <ion-input type="text" formControlName="nombre" [(ngModel)]="otherDatos.nombre"></ion-input>
+              </ion-item>
+
+              <ion-item> 
+                    <ion-label color="dark">Selecciona Edad:</ion-label> 
+                    <ion-select  formControlName="edad" multiple="false" [(ngModel)]="otherDatos.edad">
+                        <ion-option selected>18</ion-option>
+                        <ion-option>19</ion-option>
+                        <ion-option>20</ion-option>
+                        <ion-option>21</ion-option>
+                        <ion-option>22</ion-option>
+                        <ion-option>23</ion-option>
+                        <ion-option>24</ion-option>
+                        <ion-option>Igual o mas de 25</ion-option>
+                    </ion-select>
+              </ion-item>
+    
+              <ion-item>
+                        <ion-label>Autos</ion-label>
+                        <ion-checkbox formControlName="autos" checked="true" [(ngModel)]="otherDatos.autos"></ion-checkbox>
+              </ion-item>
+              <ion-item> 
+                        <ion-label>Aviones</ion-label>
+                        <ion-checkbox formControlName="aviones" checked="false" [(ngModel)]="otherDatos.aviones"></ion-checkbox>   
+              </ion-item>
+              <ion-item>
+                        <ion-label>Barcos</ion-label>
+                        <ion-checkbox formControlName="barcos" checked="false" [(ngModel)]="otherDatos.barcos"></ion-checkbox>
+              </ion-item>              
+
+            </ion-list>           
+         </ion-card-content>
+       </ion-card> 
+    </form>
+    <button ion-button block [navPush]="final" [navParams]="otherDatos" [disabled]="otherFormulario.invalid">Aceptar</button>
+</ion-content>

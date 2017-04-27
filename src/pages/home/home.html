@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pagina Principal
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formulario">
+    <ion-card>
+      <ion-card-header>
+          Login
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+           
+           <ion-item>
+              <ion-label color="dark">Usuario:</ion-label>
+              <ion-input formControlName="usuario" type="text" placeholder="Escribe tu usuario" [(ngModel)]="datos.usuario"></ion-input>
+           </ion-item>
+           <ion-item *ngIf="formulario.get('usuario').errors && formulario.get('usuario').dirty">
+              <p color="dark" *ngIf="formulario.get('usuario').hasError('required')">El campo "Usuario" NO puede estar vacio</p>
+              <p color="dark" *ngIf="formulario.get('usuario').hasError('pattern')">El "Usuario" debe ser tu nombre</p>
+           </ion-item>
+
+           <ion-item>
+              <ion-label color="dark">Contrasena:</ion-label>
+              <ion-input formControlName="contrasena" type="password" placeholder="Escribe tu contrasena" [(ngModel)]="datos.contrasena"></ion-input>
+           </ion-item>
+           <ion-item *ngIf="formulario.get('contrasena').errors && formulario.get('contrasena').dirty">
+              <p color="dark" *ngIf="formulario.get('contrasena').hasError('required')">El campo "Contrasena" no puede estar vacio</p>
+              <p color="dark" *ngIf="formulario.get('contrasena').hasError('minlength')">El campo debe tener minimo 5 letras</p>
+              <p color="dark" *ngIf="formulario.get('contrasena').hasError('maxlength')">El campo debe tener maximo 10 letras</p>
+           </ion-item>
+
+        </ion-list>
+        </ion-card-content>
+    </ion-card>
+  </form>
+
+  <button ion-button block [navPush]="otherPage" [navParams]="datos" [disabled]="formulario.invalid">Aceptar</button>
+</ion-content>

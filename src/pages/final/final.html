@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Datos Finales
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-card>
+  <ion-card-header>
+    Datos
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item> 
+          <p>Nombre: {{params.data.nombre}}</p> 
+          <p>edad: {{params.data.edad}}</p>  
+          <p>Gustos:</p><br>
+          <p *ngIf="params.data.autos">*Autos</p>         
+          <p *ngIf="params.data.aviones">*Aviones</p>         
+          <p *ngIf="params.data.barcos">*Barcos</p>         
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+</ion-content>
